@@ -1,0 +1,32 @@
+---
+
+import "../styles/global.css";
+import logo from "../images/logo.png";
+
+const { title = "Gabriel" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+     <a class="site-logo" href="/">
+  <img src={logo.src} alt="Gabriel logo" />
+</a>
+
+      <nav class="site-nav">
+        <a href="/projects">Work</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,17 +1,16 @@
 ---
+import Layout from "../layouts/Layout.astro";
 
+import event1 from "../images/home/event-1.jpg";
+import seethelines1 from "../images/seethelines/seethelines-1.jpg";
+import eden1 from "../images/eden/eden-1.jpg";
+
+const homeImages = [event1, event1, event1, seethelines1, eden1];
+const randomImage = homeImages[Math.floor(Math.random() * homeImages.length)];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Gabriel">
+  <section class="home-single-image">
+    <img src={randomImage.src} alt="Homepage featured image" />
+  </section>
+</Layout>

@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectSlider from "../../components/ProjectSlider.astro";
+
+const imageModules = import.meta.glob(
+  "../../images/revue-la-photoshoot/*.{jpg,jpeg,JPG,JPEG,png,PNG}",
+  { eager: true, import: "default" }
+);
+
+const images = Object.entries(imageModules)
+  .sort(([a], [b]) => {
+    const getNumber = (path) => {
+      const match = path.match(/-(\d+)\.(jpg|jpeg|png)$/i);
+      return match ? Number(match[1]) : 0;
+    };
+    return getNumber(a) - getNumber(b);
+  })
+  .map(([, mod]) => mod);
+---
+
+<Layout title="Revue LA — Identité — Gabriel">
+  <section class="hero">
+    <h1>Revue LA — Identité</h1>
+    <p class="project-meta">Editorial Photography / 2025</p>
+    <p>
+      Visual work produced for the release of the Identité issue of Revue LA,
+      in collaboration with an artist.
+    </p>
+  </section>
+
+  <ProjectSlider images={images} altPrefix="Revue LA image" />
+
+  <section class="project-description">
+    <p>
+      A photographic documentation of the launch event and collaborative pieces,
+      focusing on material, identity, and interaction.
+    </p>
+  </section>
+</Layout>

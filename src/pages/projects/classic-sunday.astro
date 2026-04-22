@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectSlider from "../../components/ProjectSlider.astro";
+
+const imageModules = import.meta.glob(
+  "../../images/classic-sunday/*.{jpg,jpeg,JPG,JPEG,png,PNG}",
+  { eager: true, import: "default" }
+);
+
+const images = Object.entries(imageModules)
+  .sort(([a], [b]) => {
+    const getNumber = (path) => {
+      const match = path.match(/-(\d+)\.(jpg|jpeg|png)$/i);
+      return match ? Number(match[1]) : 0;
+    };
+    return getNumber(a) - getNumber(b);
+  })
+  .map(([, mod]) => mod);
+---
+
+<Layout title="Classic Sunday — Gabriel">
+  <section class="hero">
+    <h1>Classic Sunday</h1>
+    <p class="project-meta">Automotive Photography / 2025</p>
+    <p>A short series on old-school cars.</p>
+  </section>
+
+  <ProjectSlider images={images} altPrefix="Classic Sunday image" />
+
+  <section class="project-description">
+    <p>
+      A photographic study of classic cars, exploring form, detail, and the
+      contrast between mechanical precision and organic surroundings.
+    </p>
+  </section>
+</Layout>

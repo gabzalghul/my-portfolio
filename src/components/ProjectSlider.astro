@@ -1,0 +1,52 @@
+---
+const { images = [], altPrefix = "Project image" } = Astro.props;
+const sliderId = `slider-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="project-slider" data-slider={sliderId}>
+  <button class="slider-arrow slider-arrow-left" type="button" aria-label="Previous image">
+    &#8592;
+  </button>
+
+  <div class="slider-image-wrap">
+    {images.map((image, index) => (
+      <img
+        class={`slider-image ${index === 0 ? "is-active" : ""}`}
+        src={image.src}
+        alt={`${altPrefix} ${index + 1}`}
+        data-slide
+      />
+    ))}
+  </div>
+
+  <button class="slider-arrow slider-arrow-right" type="button" aria-label="Next image">
+    &#8594;
+  </button>
+</div>
+
+<script define:vars={{ sliderId }}>
+  const root = document.querySelector(`[data-slider="${sliderId}"]`);
+  if (root) {
+    const slides = Array.from(root.querySelectorAll("[data-slide]"));
+    const prevBtn = root.querySelector(".slider-arrow-left");
+    const nextBtn = root.querySelector(".slider-arrow-right");
+
+    let currentIndex = 0;
+
+    const updateSlides = () => {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle("is-active", index === currentIndex);
+      });
+    };
+
+    prevBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlides();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlides();
+    });
+  }
+</script>

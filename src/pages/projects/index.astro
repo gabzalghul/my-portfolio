@@ -1,0 +1,91 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import thankYouLightCover from "../../images/thank-you-light/thank-you-light-1.jpg";
+import edenCover from "../../images/eden/eden-1.jpg";
+import carsCover from "../../images/classic-sunday/cars-1.jpg";
+import seethelinesCover from "../../images/seethelines/seethelines-1.jpg";
+import nsfCover from "../../images/nsf-photoshoot/nsf-photoshoot-1.jpeg";
+import shortStoryCover from "../../images/a-short-story/a-short-story-1.jpg";
+import revueLaCover from "../../images/revue-la-photoshoot/revue-la-photoshoot-1.jpg";
+---
+
+<Layout title="Work — Gabriel">
+  <section class="work-wrap">
+    <div class="project-list">
+      <article class="project-item">
+        <a class="project-card-image" href="/projects/eden">
+          <img src={edenCover.src} alt="Eden cover image" />
+        </a>
+        <a class="project-card-link" href="/projects/eden">
+          <h2>Eden</h2>
+        </a>
+        <p class="meta-line">Photography / 2026</p>
+        <p class="desc-line">A walk through the fog.</p>
+      </article>
+
+      <article class="project-item">
+        <a class="project-card-image" href="/projects/classic-sunday">
+          <img src={carsCover.src} alt="Classic Sunday cover image" />
+        </a>
+        <a class="project-card-link" href="/projects/classic-sunday">
+          <h2>Classic Sunday</h2>
+        </a>
+        <p class="meta-line">Automotive Photography / 2025</p>
+        <p class="desc-line">A short series on old-school cars.</p>
+      </article>
+
+      <article class="project-item">
+        <a href="/projects/thank-you-light">
+          <img src={thankYouLightCover.src} alt="Thank You Light cover" />
+          <h2>Thank You Light</h2>
+          <p class="project-meta">Exhibition / 2025</p>
+        </a>
+      </article>
+
+      <article class="project-item">
+        <a class="project-card-image" href="/projects/nsf-photoshoot">
+          <img src={nsfCover.src} alt="NSF Running Project cover image" />
+        </a>
+        <a class="project-card-link" href="/projects/nsf-photoshoot">
+          <h2>NSF Running Project</h2>
+        </a>
+        <p class="meta-line">Sports Photography / 2025</p>
+        <p class="desc-line">A visual documentation of a summer running initiative.</p>
+      </article>
+
+      <article class="project-item">
+        <a class="project-card-image" href="/projects/a-short-story">
+          <img src={shortStoryCover.src} alt="A Short Story cover image" />
+        </a>
+        <a class="project-card-link" href="/projects/a-short-story">
+          <h2>A Short Story</h2>
+        </a>
+        <p class="meta-line">Narrative Photography / 2025</p>
+        <p class="desc-line">A staged fictional sequence built like a short visual narrative.</p>
+      </article>
+
+      <article class="project-item">
+        <a class="project-card-image" href="/projects/revue-la-photoshoot">
+          <img src={revueLaCover.src} alt="Revue LA cover image" />
+        </a>
+        <a class="project-card-link" href="/projects/revue-la-photoshoot">
+          <h2>Revue LA — Identité</h2>
+        </a>
+        <p class="meta-line">Editorial Photography / 2025</p>
+        <p class="desc-line">Images produced for the release of the Identité issue and its launch event.</p>
+      </article>
+
+      <article class="project-item">
+        <a class="project-card-image" href="/projects/seethelines">
+          <img src={seethelinesCover.src} alt="Seethelines cover image" />
+        </a>
+        <a class="project-card-link" href="/projects/seethelines">
+          <h2>Seethelines</h2>
+        </a>
+        <p class="meta-line">Architecture Photography / 2025–2026</p>
+        <p class="desc-line">When the invisible meets the visible.</p>
+      </article>
+    </div>
+  </section>
+</Layout>

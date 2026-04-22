@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectSlider from "../../components/ProjectSlider.astro";
+
+const imageModules = import.meta.glob(
+  "../../images/thank-you-light/*.{jpg,jpeg,JPG,JPEG,png,PNG}",
+  { eager: true, import: "default" }
+);
+
+const images = Object.entries(imageModules)
+  .sort(([a], [b]) => {
+    const getNumber = (path) => {
+      const match = path.match(/-(\d+)\.(jpg|jpeg|png)$/i);
+      return match ? Number(match[1]) : 0;
+    };
+    return getNumber(a) - getNumber(b);
+  })
+  .map(([, mod]) => mod);
+---
+
+<Layout title="Thank You Light — Gabriel">
+  <section class="hero">
+    <h1>Thank You Light</h1>
+    <p class="project-meta">Exhibition / 2025</p>
+    <p>A selection of works presented during the exhibition.</p>
+  </section>
+
+  <ProjectSlider images={images} altPrefix="Thank You Light image" />
+
+  <section class="project-description">
+    <p>
+      A curated body of work presented as part of the exhibition “Thank You Light”,
+      exploring light, atmosphere, and perception through photography.
+    </p>
+  </section>
+</Layout>

@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectSlider from "../../components/ProjectSlider.astro";
+
+const imageModules = import.meta.glob(
+  "../../images/nsf-photoshoot/*.{jpg,jpeg,JPG,JPEG,png,PNG}",
+  { eager: true, import: "default" }
+);
+
+const images = Object.entries(imageModules)
+  .sort(([a], [b]) => {
+    const getNumber = (path) => {
+      const match = path.match(/-(\d+)\.(jpg|jpeg|png)$/i);
+      return match ? Number(match[1]) : 0;
+    };
+    return getNumber(a) - getNumber(b);
+  })
+  .map(([, mod]) => mod);
+---
+
+<Layout title="NSF Running Project — Gabriel">
+  <section class="hero">
+    <h1>NSF Running Project</h1>
+    <p class="project-meta">Sports Photography / 2025</p>
+    <p>
+      A visual documentation of a summer running initiative, capturing movement,
+      effort, and community.
+    </p>
+  </section>
+
+  <ProjectSlider images={images} altPrefix="NSF image" />
+
+  <section class="project-description">
+    <p>
+      A series focused on the energy of running culture, blending candid moments
+      with structured compositions to reflect both performance and atmosphere.
+    </p>
+  </section>
+</Layout>
