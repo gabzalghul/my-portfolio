@@ -1,0 +1,63 @@
+---
+const pdfUrl = "/catalogue.pdf";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOPIR Catalogue 2026</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #111;
+        overflow: hidden;
+      }
+
+      .viewer {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        display: block;
+      }
+
+      .fallback {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.92);
+        color: #111;
+        text-decoration: none;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+      }
+
+      .fallback:hover {
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      class="viewer"
+      src={pdfUrl}
+      title="DOPIR Catalogue 2026"
+    ></iframe>
+
+    <a
+      class="fallback"
+      href={pdfUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Open PDF
+    </a>
+  </body>
+</html>
